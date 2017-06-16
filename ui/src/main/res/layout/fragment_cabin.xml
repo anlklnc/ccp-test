@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.ui.fragments.CabinFragment"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp" android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fr_search"
+        style="@style/mw">
+
+        <android.support.v7.widget.SearchView
+            style="@style/ww"
+            android:layout_gravity="right"></android.support.v7.widget.SearchView>
+    </FrameLayout>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp" android:background="@color/blue2"/>-->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="160dp"
+            android:paddingRight="160dp"
+            android:paddingTop="22dp"
+            android:background="@drawable/ic_vector"
+            >
+
+            <GridView
+                android:id="@+id/grid_right"
+                android:layout_width="@dimen/cabin_length"
+                android:layout_height="wrap_content"
+                android:columnWidth="@dimen/seat_item_size"
+                android:numColumns="30"
+                android:horizontalSpacing="20dp"
+                android:stretchMode="none"
+                />
+
+            <GridView
+                android:layout_marginTop="10dp"
+                android:id="@+id/grid_left"
+                android:layout_width="@dimen/cabin_length"
+                android:layout_height="wrap_content"
+                android:columnWidth="@dimen/seat_item_size"
+                android:numColumns="30"
+                android:horizontalSpacing="20dp"
+                android:stretchMode="none"
+                />
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="2000dp"-->
+                <!--android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">-->
+                <!--<View-->
+                    <!--android:layout_width="1000dp"-->
+                    <!--android:layout_height="match_parent" android:background="@color/blue2" />-->
+                <!--<View-->
+                    <!--android:layout_width="1000dp"-->
+                    <!--android:layout_height="match_parent" android:background="@color/red2" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="2000dp"-->
+                <!--android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">-->
+                <!--<View-->
+                    <!--android:layout_width="1000dp"-->
+                    <!--android:layout_height="match_parent" android:background="@color/red2" />-->
+                <!--<View-->
+                    <!--android:layout_width="1000dp"-->
+                    <!--android:layout_height="match_parent" android:background="@color/blue2" />-->
+            <!--</LinearLayout>-->
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

@@ -1,0 +1,193 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    //////////////////////
+
+    <style name="ww">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="wm">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="mw">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="mm">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="left_menu_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gray1</item>
+    </style>
+
+    <style name="left_menu_header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <style name="left_menu_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?selectableItemBackground</item>
+    </style>
+
+    <style name="left_menu_icon">
+        <item name="android:id">@id/iw_left_menu_item</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:tint">@color/left_menu_icon_tint</item>
+
+    </style>
+    <style name="left_menu_tw">
+        <item name="android:id">@id/tw_left_menu_item</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/left_menu_tw_tint</item>
+    </style>
+    <style name="tw_flight_info">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="tw_aircraft_info" parent="ww">
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="info_box">
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">240dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">5dp</item>
+    </style>
+
+    <style name="list_field">
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/round2</item>
+    </style>
+
+    <style name="equipment_container">
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">160dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/round1</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:paddingTop">20dp</item>
+    </style>
+
+    <style name="equipment_icon">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:tint">@color/gray3</item>
+    </style>
+
+    <style name="equipment_name" parent="ww">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="equipment_status" parent="ww">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="seat_button">
+        <item name="android:id">@id/btn_seat</item>
+        <item name="android:layout_width">@dimen/seat_item_size</item>
+        <item name="android:layout_height">@dimen/seat_item_size</item>
+        <item name="android:background">@drawable/round1</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="seb_button">
+        <item name="android:id">@id/btn_seb</item>
+        <item name="android:layout_width">@dimen/seat_item_size</item>
+        <item name="android:layout_height">@dimen/seat_item_size</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:src">@drawable/ic_board</item>
+    </style>
+
+    <style name="menu_divider_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider1</item>
+    </style>
+
+    <style name="menu_divider_2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/divider2</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:alpha">0.4</item>
+    </style>
+
+    <!--textViews-->
+
+    <style name="tw9" parent="ww">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray3</item>
+        <item name="android:layout_marginRight">6dp</item>
+    </style>
+
+    <style name="tw_menu" parent="tw9">
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="tw_title" parent="ww">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/gray3</item>
+    </style>
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round2"
+    android:paddingTop="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:id="@+id/rel_title"
+        android:paddingLeft="10dp" android:paddingRight="10dp"
+        >
+        <TextView
+            android:id="@+id/tw_title"
+            style="@style/tw_title"
+            android:text="SEB X DEF" android:textColor="@color/blue2" android:textAllCaps="true" android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <!--<View-->
+    <!--style="@style/menu_divider_1"-->
+    <!--android:layout_marginTop="6dp"-->
+    <!--/>-->
+
+    <LinearLayout
+        android:id="@+id/lin_status"
+        style="@style/mw"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingTop="18dp" android:paddingBottom="18dp"
+        >
+        <TextView
+            style="@style/tw9"
+            android:text="Status:"
+            />
+        <TextView
+            style="@style/tw9"
+            android:text="Running"
+            android:textColor="@color/green"
+            />
+        <TextView
+            style="@style/tw9"
+            android:text="Temperature:"
+            android:layout_marginLeft="16dp"
+            />
+        <TextView
+            android:id="@+id/tw_temperature"
+            style="@style/tw9"
+            android:text="37C" android:textColor="@color/orange"
+            />
+    </LinearLayout>
+
+    <View
+        style="@style/menu_divider_1"
+        />
+
+    <LinearLayout
+        android:id="@+id/lin_options"
+        style="@style/mw"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <TextView
+            style="@style/tw_menu"
+            android:text="Option 1"
+            />
+        <View
+            style="@style/menu_divider_2" />
+        <TextView
+            style="@style/tw_menu"
+            android:text="Option 2"
+            />
+        <View
+            style="@style/menu_divider_2" />
+        <TextView
+            style="@style/tw_menu"
+            android:text="Option 3"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

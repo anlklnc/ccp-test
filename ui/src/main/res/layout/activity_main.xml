@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
+<!--
+    <include android:id="@+id/left_menu" layout="@layout/content_left_menu"/>
+-->
+    <!--
+    <com.test.ui.LeftMenu
+        android:id="@+id/left_menu"
+        android:layout_width="wrap_content" android:layout_height="match_parent"
+        >
+
+    </com.test.ui.LeftMenu>
+    -->
+
+    <FrameLayout
+        android:id="@+id/fr_left_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/left_menu_sep_wid" android:layout_height="match_parent"
+        android:layout_toRightOf="@id/fr_left_menu"
+        android:background="@android:color/darker_gray"
+        />
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/submenu"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/fr_left_menu"
+        ></FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/view"
+        android:layout_above="@id/submenu"
+        android:clickable="true"
+        >
+    </FrameLayout>
+
+</RelativeLayout>

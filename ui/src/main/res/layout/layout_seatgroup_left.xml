@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@id/lin_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tw_number"
+        style="@style/ww"
+        android:layout_marginBottom="20dp"
+        android:text="1" android:textSize="20sp" android:textColor="@android:color/black" android:textStyle="bold"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        style="@style/seat_button"
+        android:text="C" android:tag="c"/>
+
+    <Button
+        style="@style/seat_button"
+        android:text="B" android:tag="b"/>
+
+    <Button
+        style="@style/seat_button"
+        android:text="A" android:tag="a"/>
+
+    <ImageView
+        style="@style/seb_button"
+        android:tag="l"
+        />
+
+</LinearLayout>

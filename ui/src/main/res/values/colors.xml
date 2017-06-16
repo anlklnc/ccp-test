@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#c62828</color>
+    <color name="colorPrimaryDark">#8e0000</color>
+    <color name="colorAccent">#0277BD</color>
+
+    <color name="gray1">#A4A4A4</color>
+    <color name="gray2">#6E6E6E</color>
+    <color name="gray3">#424242</color>
+    <color name="gray4">#2E2E2E</color>
+    <color name="red2">#8A0808</color>
+    <color name="blue2">#084B8A</color>
+    <color name="green">#5FB404</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="orange">#DF7401</color>
+
+    <color name="text_color_default">@color/gray2</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="left_menu_tint">@color/gray2</color>
+    <color name="left_menu_icon_tint">@color/left_menu_tint</color>
+    <color name="left_menu_tw_tint">@color/left_menu_tint</color>
+    <color name="stroke_color_normal">#AEAEAE</color>
+    <color name="stroke_color_highlighted">@color/green</color>
+    <color name="device_normal">@color/black</color>
+    <color name="device_highlighted">@color/green</color>
+    <color name="divider1">@color/gray3</color>
+    <color name="divider2">@color/gray1</color>
+
+    <color name="album_title">#4c4c4c</color>
+</resources>

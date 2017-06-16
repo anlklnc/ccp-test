@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.test.ui.activities.BottomActivity">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/title_home" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="100dp" android:layout_marginLeft="20dp"
+            >
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="b1"
+                android:text="tab"
+                />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="b2"
+                android:text="spinner"
+               />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="b3"
+                android:text="drawer"
+                />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="b4"
+                android:text="Master Detail"
+                />
+
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="20dp"
+            >
+            <ToggleButton
+            android:id="@+id/iw"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/switch_bg"
+            android:textOff=""
+            android:textOn="" />
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />
+
+</LinearLayout>

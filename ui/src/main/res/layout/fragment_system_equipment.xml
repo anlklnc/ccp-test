@@ -1,0 +1,156 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.test.ui.fragments.SystemEquipmentFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_server"
+                 />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="Server 1"
+                />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/equipment_status"
+                android:text="Running" />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                android:src="@drawable/ic_server"
+                style="@style/equipment_icon"
+                />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="Server 2"
+                />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Failure"
+                android:textColor="@android:color/holo_red_light"
+                />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_plug"
+                />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="MCU 1"
+                />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Running"
+                />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_plug"
+                />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="MCU 2"
+                />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Warning"
+                android:textColor="@color/blue2"
+                />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_ccp"
+                />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/equipment_name"
+                android:text="CCP" />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Running"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/lin_equipment_list_1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                >
+            </LinearLayout>
+        </ScrollView>
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/lin_equipment_list_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                >
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

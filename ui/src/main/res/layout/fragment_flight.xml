@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context="com.test.ui.fragments.FlightFragment"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+            <LinearLayout
+                style="@style/info_box"
+                >
+
+                <TextView
+                    style="@style/tw_aircraft_info"
+                    android:text="Aircraft Type"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue2"
+                    />
+
+                <TextView
+                    style="@style/tw_aircraft_info"
+                    android:text="A320-232" android:textSize="24sp"
+                    />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/ic_flight"
+                android:tint="@color/blue2"
+                />
+
+
+            <LinearLayout
+                style="@style/info_box"
+                >
+
+                <TextView
+                    style="@style/tw_aircraft_info"
+                    android:text="Tail Number"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue2"
+                    />
+
+                <TextView
+                    style="@style/tw_aircraft_info"
+                    android:text="TC-JRAP" android:textSize="24sp"
+                    />
+            </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/gray2"
+        />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:id="@+id/lin_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

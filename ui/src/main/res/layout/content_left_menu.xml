@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin"
+    android:layout_width="@dimen/left_menu_wid"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_alignParentLeft="true"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/skyfe"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lin_flight_info"
+            style="@style/left_menu_layout"
+            android:tag="flight">
+
+            <ImageView
+                android:id="@+id/iw_left_menu_item"
+                style="@style/left_menu_icon"
+                android:src="@drawable/ic_flight" />
+
+            <TextView
+                android:id="@+id/tw_left_menu_item"
+                style="@style/left_menu_tw"
+                android:text="Flight Information" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_equipment"
+            style="@style/left_menu_layout"
+            android:tag="equipment"
+            >
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_server"
+                />
+
+            <TextView
+                style="@style/left_menu_tw"
+                android:text="System Equipment" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_services"
+            style="@style/left_menu_layout"
+            android:tag="services"
+            >
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_settings_2"/>
+
+            <TextView
+                style="@style/left_menu_tw"
+                android:text="System Services" />
+        </LinearLayout>
+
+        <View
+            style="@style/left_menu_divider" />
+
+        <LinearLayout
+            android:id="@+id/lin_cabin"
+            style="@style/left_menu_layout"
+            android:tag="cabin"
+            >
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_seat"/>
+
+            <TextView
+                style="@style/left_menu_tw"
+                android:text="Cabin" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_pa"
+            style="@style/left_menu_layout"
+            android:tag="pa"
+            >
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_pa"/>
+
+            <TextView
+                style="@style/left_menu_tw"
+                android:text="PA" />
+        </LinearLayout>
+
+        <View
+            style="@style/left_menu_divider" />
+
+        <TextView
+            style="@style/left_menu_header" android:text="KIFE" />
+
+        <LinearLayout
+            android:id="@+id/lin_kife"
+            style="@style/left_menu_layout"
+            android:tag="kife">
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_ondemand"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/left_menu_tw"
+                android:text="Kife" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_media"
+            style="@style/left_menu_layout"
+            android:tag="media">
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_video_library"/>
+
+            <TextView
+                style="@style/left_menu_tw"
+                android:text="Media" />
+        </LinearLayout>
+
+        <View
+            style="@style/left_menu_divider" android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/lin_shutdown"
+            style="@style/left_menu_layout"
+            android:tag="shutdown">
+
+            <ImageView style="@style/left_menu_icon"
+                android:src="@drawable/ic_power"/>
+
+            <TextView
+                style="@style/left_menu_tw"
+                android:text="Shutdown/Restart" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="4dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DME" android:textColor="@color/white" android:textSize="20sp"/>
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerInParent="true"
+                    android:background="@color/white"/>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_flight"
+                    android:rotation="90"
+                    android:layout_centerInParent="true" android:tint="@color/white"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADB" android:textColor="@color/white" android:textSize="20sp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Tail : " android:textColor="@color/white" android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TC-JRAP" android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
