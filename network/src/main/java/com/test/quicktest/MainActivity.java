@@ -13,6 +13,8 @@ import android.view.View;
 import com.havelsan.kife.ccp.dto.AircraftInfoDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     RestApi network;
@@ -26,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         network = RestApi.getInstance();
 
-        test();
+        dummyTest();
+        networkTest();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -34,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                test();
+                networkTest();
             }
         });
     }
 
-    void test() {
+    void networkTest() {
         network.getAircraftInfo(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
@@ -78,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("!!!", "onResult: arinc list");
             }
         });
+    }
+
+    void dummyTest() {
+        HashMap map = Disk.load();
+        Log.i("!!!", "dummyTest: ");
     }
 
     @Override

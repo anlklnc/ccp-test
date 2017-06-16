@@ -1,5 +1,8 @@
 package com.test.quicktest;
 
+import android.os.Handler;
+import android.util.Log;
+
 import java.util.HashMap;
 
 
@@ -20,8 +23,9 @@ public class RestApi {
     }
 
     private RestApi() {
-        map = new HashMap<>();
         network = new Network();
+        map = Disk.load();
+        Log.i("!!!", "rest api map size: " + map.size());
     }
 
     public void getAircraftInfo(final ResponseListener listener) {
@@ -80,7 +84,7 @@ public class RestApi {
         return  new NetworkListener() {
             @Override
             public void onResponse(Object data) {
-                map.put(key, data);
+                save(key, data);
                 listener.onResponse(data);
             }
 
@@ -99,5 +103,18 @@ public class RestApi {
             return false;
         }
         return true;
+    }
+
+    private void save(String key, Object data) {
+        map.put(key, data);
+
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                Disk.save(map);
+            }
+        });
+
+        Log.i("!!!", "response saved for: " + key);
     }
 }

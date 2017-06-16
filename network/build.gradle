@@ -32,7 +32,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.jakewharton.threetenabp:threetenabp:1.0.5'
 
     testCompile 'junit:junit:4.12'
 }
