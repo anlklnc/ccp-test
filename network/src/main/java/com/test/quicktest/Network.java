@@ -111,13 +111,13 @@ public class Network {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 Object data = response.body();
-                Log.i("!!!", "network.onResponse");
+                Log.i("!!!", "restApi.onResponse");
                 listener.onResponse(data);
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                Log.i("!!!", "network.onFailure: " + t.getCause());
+                Log.i("!!!", "restApi.onFailure: " + t.getCause());
                 listener.onError();
             }
         };

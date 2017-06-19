@@ -17,6 +17,7 @@ public class RestApi {
     private static final RestApi singleton = new RestApi();
     HashMap<String, Object> map;
     Network network;
+    boolean isChanged = true;
 
     public static RestApi getInstance() {
         return singleton;
@@ -107,14 +108,18 @@ public class RestApi {
 
     private void save(String key, Object data) {
         map.put(key, data);
-
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                Disk.save(map);
-            }
-        });
-
+        isChanged = true;
         Log.i("!!!", "response saved for: " + key);
+    }
+
+    public void save() {
+        if(isChanged) {
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    Disk.save(map);
+                }
+            });
+        }
     }
 }

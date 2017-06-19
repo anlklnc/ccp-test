@@ -10,14 +10,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.havelsan.kife.ccp.dto.ARINCLabelDto;
 import com.havelsan.kife.ccp.dto.AircraftInfoDto;
+import com.havelsan.kife.ccp.dto.DiscreteDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    RestApi network;
+    RestApi restApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        network = RestApi.getInstance();
+        restApi = RestApi.getInstance();
 
         dummyTest();
         networkTest();
@@ -43,42 +46,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void networkTest() {
-        network.getAircraftInfo(new ResponseListener() {
+        restApi.getAircraftInfo(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
                 AircraftInfoDto data = (AircraftInfoDto)o;
                 Log.i("!!!", "onResult: aircraft info");
             }
         });
-        network.getPartNumber(new ResponseListener() {
+        restApi.getPartNumber(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
                 Log.i("!!!", "onResult: part number");
             }
         });
-        network.getCCPResponse(new ResponseListener() {
+        restApi.getCCPResponse(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
                 Log.i("!!!", "onResult: ccp response");
             }
         });
-        network.getSystemEquipment(new ResponseListener() {
+        restApi.getSystemEquipment(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
                 SystemEquipment eq = (SystemEquipment)o;
                 Log.i("!!!", "onResult: system equipment");
             }
         });
-        network.getDiscreteList(new ResponseListener() {
+        restApi.getDiscreteList(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
+                ArrayList<DiscreteDto> discreteList = (ArrayList<DiscreteDto>)o;
                 Log.i("!!!", "onResult: all discretes");
+                for (DiscreteDto dto:discreteList) {
+                    Log.i("!!!", "Discrete: " + dto.getName() +"->"+ dto.getValue());
+                }
             }
         });
-        network.getArincList(new ResponseListener() {
+        restApi.getArincList(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
                 Log.i("!!!", "onResult: arinc list");
+                ArrayList<ARINCLabelDto> arincList = (ArrayList<ARINCLabelDto>)o;
+                for (ARINCLabelDto dto:arincList) {
+                    Log.i("!!!", "Arinc: " + dto.getLabelNumber()+"->"+dto.getName()+dto.getData()+"->"+dto.getWordCount()+"->"+dto.getDateTime()+"->"+dto.getChannel());
+                }
             }
         });
     }
@@ -108,5 +119,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        restApi.save(); //çıkış yapmadan önce yeni data varsa kaydet
+        super.onDestroy();
     }
 }
