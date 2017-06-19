@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.test.ui.fragments.SystemEquipmentFragment">
+    tools:context="com.test.ui.fragments.SystemEquipmentFragment"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp" >
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
+        style="@style/equipment_row">
 
         <LinearLayout
             style="@style/equipment_container"
@@ -33,6 +30,7 @@
                 style="@style/equipment_status"
                 android:text="Running" />
         </LinearLayout>
+
         <LinearLayout
             style="@style/equipment_container"
             >
@@ -53,18 +51,111 @@
                 android:textColor="@android:color/holo_red_light"
                 />
         </LinearLayout>
+
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="CCP" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_keyboard" />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Running"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/equipment_row">
+
+        <LinearLayout style="@style/equipment_container">
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_plug" />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="MCU 1" />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Running" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/equipment_container">
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_plug" />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="MCU 2" />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Warning"
+                android:textColor="@color/blue2" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/equipment_container">
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_web" />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="Web Server" />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Running" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/equipment_row">
         <LinearLayout
             style="@style/equipment_container"
             >
 
             <ImageView
                 style="@style/equipment_icon"
-                android:src="@drawable/ic_plug"
+                android:src="@drawable/ic_pa"
                 />
 
             <TextView
                 style="@style/equipment_name"
-                android:text="MCU 1"
+                android:text="PA Server"
+                />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Failure"
+                android:textColor="@android:color/holo_red_light"
+                />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_map"
+                />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="Map Server"
                 />
 
             <TextView
@@ -78,12 +169,12 @@
 
             <ImageView
                 style="@style/equipment_icon"
-                android:src="@drawable/ic_plug"
+                android:src="@drawable/ic_cable"
                 />
 
             <TextView
                 style="@style/equipment_name"
-                android:text="MCU 2"
+                android:text="Dscrt Reader"
                 />
 
             <TextView
@@ -92,6 +183,11 @@
                 android:textColor="@color/blue2"
                 />
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/equipment_row">
         <LinearLayout
             style="@style/equipment_container"
             >
@@ -102,14 +198,32 @@
                 />
 
             <TextView
-                android:id="@+id/textView3"
                 style="@style/equipment_name"
-                android:text="CCP" />
+                android:text="Log Sender" />
 
             <TextView
                 style="@style/equipment_status"
                 android:text="Running"
                 />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/equipment_container"
+            >
+
+            <ImageView
+                style="@style/equipment_icon"
+                android:src="@drawable/ic_cable"
+                />
+
+            <TextView
+                style="@style/equipment_name"
+                android:text="Arinc 429"
+                />
+
+            <TextView
+                style="@style/equipment_status"
+                android:text="Running" />
         </LinearLayout>
     </LinearLayout>
 
