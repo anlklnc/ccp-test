@@ -16,6 +16,7 @@ import com.test.ui.fragments.FlightFragment;
 import com.test.ui.fragments.KifeFragment;
 import com.test.ui.fragments.MediaFragment;
 import com.test.ui.fragments.SystemEquipmentFragment;
+import com.test.ui.fragments.SystemInformationFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements LeftMenuListener 
 
     final int FRAGMENT_FLIGHT = 0;
     final int FRAGMENT_EQUIPMENT = 1;
-    final int FRAGMENT_SERVICE = 2;
+    final int FRAGMENT_INFORMATION = 2;
     final int FRAGMENT_KIFE = 3;
     final int FRAGMENT_MEDIA = 4;
     final int FRAGMENT_SHUTDOWN = 5;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements LeftMenuListener 
         leftMenuLayout.addView(menu);
 //        onMenuItemSelected("flight");
 //        onMenuItemSelected("cabin");
-        onMenuItemSelected("equipment");
+        onMenuItemSelected("information");
     }
 
     @Override
@@ -68,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements LeftMenuListener 
         } else if (tag.equals("equipment")) {
             fragmentID = FRAGMENT_EQUIPMENT;
             targetFragment = new SystemEquipmentFragment();
-        } else if (tag.equals("services")) {
-            fragmentID = FRAGMENT_SERVICE;
-            //targetFragment = new SystemServicesFragment();
+        } else if (tag.equals("information")) {
+            fragmentID = FRAGMENT_INFORMATION;
+            targetFragment = new SystemInformationFragment();
         }
         else if(tag.equals("kife")) {
             fragmentID = FRAGMENT_KIFE;

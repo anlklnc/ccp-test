@@ -57,7 +57,7 @@
         <LinearLayout
             android:id="@+id/lin_services"
             style="@style/left_menu_layout"
-            android:tag="services"
+            android:tag="information"
             >
 
             <ImageView style="@style/left_menu_icon"
@@ -65,7 +65,7 @@
 
             <TextView
                 style="@style/left_menu_tw"
-                android:text="System Services" />
+                android:text="System Info" />
         </LinearLayout>
 
         <View

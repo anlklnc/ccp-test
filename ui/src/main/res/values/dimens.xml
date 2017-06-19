@@ -8,7 +8,7 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
 
-    <dimen name="left_menu_wid">220dp</dimen>
+    <dimen name="left_menu_wid">230dp</dimen>
 
     <dimen name="item_width">200dp</dimen>
     <dimen name="text_margin">16dp</dimen>
