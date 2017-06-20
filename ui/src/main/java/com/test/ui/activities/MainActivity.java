@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements LeftMenuListener 
         leftMenuLayout.addView(menu);
 //        onMenuItemSelected("flight");
 //        onMenuItemSelected("cabin");
-        onMenuItemSelected("information");
+        onMenuItemSelected("equipment");
     }
 
     @Override

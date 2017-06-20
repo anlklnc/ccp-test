@@ -17,7 +17,7 @@ public class RestApi {
     private static final RestApi singleton = new RestApi();
     HashMap<String, Object> map;
     Network network;
-    boolean isChanged = true;
+    boolean isChanged = false;
 
     public static RestApi getInstance() {
         return singleton;
