@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="horizontal"
-        android:gravity="center"
+        android:gravity="center" android:layout_gravity="center_horizontal"
         >
 
         <LinearLayout
@@ -114,9 +114,10 @@
 
     <LinearLayout
         android:id="@+id/lin_content"
-        android:layout_width="600dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical" android:gravity="center" android:layout_gravity="center_horizontal"
+        android:layout_width="900dp" android:layout_height="match_parent"
+        android:paddingTop="10dp" android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal" android:layout_gravity="center_horizontal"
         >
     </LinearLayout>
 </LinearLayout>

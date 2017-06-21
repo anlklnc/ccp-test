@@ -1,4 +1,5 @@
- package com.test.quicktest;
+package com.test.quicktest;
+
 
 import android.util.Log;
 
@@ -11,7 +12,9 @@ import com.google.gson.JsonParseException;
 import com.havelsan.kife.ccp.dto.ARINCLabelDto;
 import com.havelsan.kife.ccp.dto.AircraftInfoDto;
 import com.havelsan.kife.ccp.dto.CCPResponse;
+import com.havelsan.kife.ccp.dto.CabinEquipmentDto;
 import com.havelsan.kife.ccp.dto.DiscreteDto;
+import com.havelsan.kife.ccp.dto.FlightInfoDto;
 import com.havelsan.kife.ccp.dto.PartNumberDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
 
@@ -32,7 +35,8 @@ import retrofit2.http.GET;
 public class Network {
 
     final String BASE_URL = "http://192.168.43.237:8080/";
-    //final String BASE_URL = "http://httpbin.org/";
+//    final String BASE_URL = "http://10.150.25.59:8080/";
+//    final String BASE_URL = "http://httpbin.org/";
 
     ControlPanelClient client;
 
@@ -54,6 +58,12 @@ public class Network {
 
         @GET("/api/arinc/get")
         Call<List<ARINCLabelDto>>arincList();
+
+        @GET("api/equipment/cabin/all")
+        Call<List<CabinEquipmentDto>>cabinEquipmentList();
+
+        @GET("/api/flightinfo/current")
+        Call<FlightInfoDto>flightInfo();
     }
 
     /** aircraft info */
@@ -80,12 +90,18 @@ public class Network {
     void getArincList(final NetworkListener listener) { setRequest(client.arincList(), listener);}
     public String getArincList(){return getUrl(client.arincList());}
 
+    /** cabin equipment list */
+    void getCabinEquipment(final NetworkListener listener) { setRequest(client.cabinEquipmentList(), listener);}
+    public String getCabinEquipment(){return getUrl(client.cabinEquipmentList());}
 
-    ///////////////////////////////////////////////////////////////////////////////
+    /** flight info */
+    void getFlightInfo(final NetworkListener listener) { setRequest(client.flightInfo(), listener);}
+    public String getFlightInfo(){return getUrl(client.flightInfo());}
 
 
 
     public Network() {
+
         // Creates the json object which will manage the information received
         GsonBuilder builder = new GsonBuilder();
 
@@ -107,6 +123,8 @@ public class Network {
     }
 
     private void setRequest(Call call, final NetworkListener listener) {
+
+        //mLog.i("!!!", "setRequest: "+call.request().url());
         Callback callback = new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
@@ -117,7 +135,7 @@ public class Network {
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                Log.i("!!!", "restApi.onFailure: " + t.getCause());
+                Log.e("!!!", "Connection failed: " + t.getCause());
                 listener.onError();
             }
         };
