@@ -9,18 +9,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
-import com.havelsan.kife.ccp.dto.ARINCLabelDto;
-import com.havelsan.kife.ccp.dto.AircraftInfoDto;
-import com.havelsan.kife.ccp.dto.DiscreteDto;
+import com.havelsan.kife.ccp.dto.CCPResponse;
+import com.havelsan.kife.ccp.dto.ProcessInfoDto;
+import com.havelsan.kife.ccp.dto.ServiceInfoDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RestApi restApi;
+    TextView tw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +32,50 @@ public class MainActivity extends AppCompatActivity {
 
         restApi = RestApi.getInstance();
 
-        dummyTest();
-        networkTest();
-
+        tw = (TextView)findViewById(R.id.tw_hello);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                networkTest();
+                //networkTest();
+                contentTest();
+            }
+        });
+
+        //networkTest();
+        contentTest();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.i("!!!", "onStop: ");
+        super.onStop();
+    }
+
+    void contentTest() {
+        ContentApi.getInstance().getMovieInfo(new ResponseListener() {
+            @Override
+            public void onResponse(Object o) {
+                Log.i("!!!", "onResponse: ");
             }
         });
     }
 
     void networkTest() {
+
+//        tw.setText("test");
+//        restApi.subscribe(tw);
+
         restApi.getAircraftInfo(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
-                AircraftInfoDto data = (AircraftInfoDto)o;
+//                AircraftInfoDto data = (AircraftInfoDto)o;
                 Log.i("!!!", "onResult: aircraft info");
             }
         });
+
         restApi.getPartNumber(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
@@ -63,6 +86,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Object o) {
                 Log.i("!!!", "onResult: ccp response");
+                CCPResponse response = (CCPResponse)o;
+                List<ServiceInfoDto> list = response.getServices();
+                for (ServiceInfoDto item:list) {
+                    String name = item.getDisplayName();
+                    String state = item.getState();
+                    String cpu = item.getCpuUsage();
+                    String ram = item.getRamuUsage();
+                    Log.i("!!!", "Service: " + name+"-"+state+"-"+cpu+"-"+ram);
+                }
+
+                List<ProcessInfoDto> listt = response.getProcesses();
+                for(ProcessInfoDto item:listt) {
+                    String name = item.getCaption();//name
+                    String cpu = item.getCpuUsage();
+                    String ram = item.getRamUsage();
+                    Log.i("!!!", "Process: " + name+"-"+cpu+"-"+ram);
+                }
             }
         });
         restApi.getSystemEquipment(new ResponseListener() {
@@ -75,28 +115,23 @@ public class MainActivity extends AppCompatActivity {
         restApi.getDiscreteList(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
-                ArrayList<DiscreteDto> discreteList = (ArrayList<DiscreteDto>)o;
                 Log.i("!!!", "onResult: all discretes");
-                for (DiscreteDto dto:discreteList) {
-                    Log.i("!!!", "Discrete: " + dto.getName() +"->"+ dto.getValue());
-                }
+//                ArrayList<DiscreteDto> discreteList = (ArrayList<DiscreteDto>)o;
+//                for (DiscreteDto dto:discreteList) {
+//                    Log.i("!!!", "Discrete: " + dto.getName() +"->"+ dto.getValue());
+//                }
             }
         });
         restApi.getArincList(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
                 Log.i("!!!", "onResult: arinc list");
-                ArrayList<ARINCLabelDto> arincList = (ArrayList<ARINCLabelDto>)o;
-                for (ARINCLabelDto dto:arincList) {
-                    Log.i("!!!", "Arinc: " + dto.getLabelNumber()+"->"+dto.getName()+dto.getData()+"->"+dto.getWordCount()+"->"+dto.getDateTime()+"->"+dto.getChannel());
-                }
+//                ArrayList<ARINCLabelDto> arincList = (ArrayList<ARINCLabelDto>)o;
+//                for (ARINCLabelDto dto:arincList) {
+//                    Log.i("!!!", "Arinc: " + dto.getLabelNumber()+"->"+dto.getName()+dto.getData()+"->"+dto.getWordCount()+"->"+dto.getDateTime()+"->"+dto.getChannel());
+//                }
             }
         });
-    }
-
-    void dummyTest() {
-        HashMap map = Disk.load();
-        Log.i("!!!", "dummyTest: ");
     }
 
     @Override
@@ -123,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        Log.i("!!!", "onDestroy: ");
         restApi.save(); //çıkış yapmadan önce yeni data varsa kaydet
         super.onDestroy();
     }

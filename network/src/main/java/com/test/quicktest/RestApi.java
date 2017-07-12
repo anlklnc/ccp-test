@@ -2,6 +2,7 @@ package com.test.quicktest;
 
 import android.os.Handler;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -12,7 +13,7 @@ import java.util.HashMap;
 
 public class RestApi {
 
-    final int MODE = 2; //1: her zaman server'a git, 2: bağlantı yoksa mapten kullan, 3: her zaman map'ten kullan
+    final int MODE = 1; //1: her zaman server'a git, 2: bağlantı yoksa mapten kullan, 3: her zaman map'ten kullan
 
     private static final RestApi singleton = new RestApi();
     HashMap<String, Object> map;
@@ -94,6 +95,17 @@ public class RestApi {
         if(isNew(url, listener)) {
             network.getFlightInfo(getListener(url, listener));
         }
+    }
+
+    public void subscribe(final TextView tw) {
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("!!!", "run: " + tw==null?"null":"not null");
+                tw.setText("asd");
+            }
+        }, 5000);
     }
 
     //////////////////////////////////////////////////////////////////

@@ -1,6 +1,5 @@
 package com.test.quicktest;
 
-
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -34,9 +33,11 @@ import retrofit2.http.GET;
 
 public class Network {
 
-    final String BASE_URL = "http://192.168.43.237:8080/";
-//    final String BASE_URL = "http://10.150.25.59:8080/";
-//    final String BASE_URL = "http://httpbin.org/";
+    final String BASE_URL = "http://192.168.43.206:8080/";    //localhost-ifetest
+//    final String BASE_URL = "http://192.168.42.30:8080/";    //localhost-huawei
+//    final String BASE_URL = "http://10.150.25.47:8080/";    //localhost-hwadmin
+//    final String BASE_URL = "http://192.168.43.237:8080/";    //onurun makine-ifetest
+//    final String BASE_URL = "http://10.150.25.59:8080/";  //onurun makine-hwadmin
 
     ControlPanelClient client;
 
