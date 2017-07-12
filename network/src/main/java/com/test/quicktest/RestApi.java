@@ -1,11 +1,10 @@
 package com.test.quicktest;
 
+
 import android.os.Handler;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.util.HashMap;
-
 
 /**
  * Created by asd on 16.6.2017.
@@ -13,11 +12,12 @@ import java.util.HashMap;
 
 public class RestApi {
 
-    final int MODE = 1; //1: her zaman server'a git, 2: bağlantı yoksa mapten kullan, 3: her zaman map'ten kullan
+    final int MODE = 2; //1: her zaman server'a git, 2: bağlantı yoksa mapten kullan, 3: her zaman map'ten kullan
 
     private static final RestApi singleton = new RestApi();
     HashMap<String, Object> map;
     Network network;
+    ContentNetwork contentNetwork;
     boolean isChanged = false;
 
     public static RestApi getInstance() {
@@ -27,6 +27,8 @@ public class RestApi {
     private RestApi() {
 
         network = new Network();
+        contentNetwork = new ContentNetwork();
+
         map = Disk.load();
         Log.i("!!!", "rest api map size: " + map.size());
     }
@@ -97,15 +99,17 @@ public class RestApi {
         }
     }
 
-    public void subscribe(final TextView tw) {
-        Handler h = new Handler();
-        h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("!!!", "run: " + tw==null?"null":"not null");
-                tw.setText("asd");
-            }
-        }, 5000);
+    public void subscribeSomething() {
+
+    }
+
+    //CONTENT
+    public void getMovieInfo(final ResponseListener listener) {
+
+        final String url = contentNetwork.getMovieInfo();
+        if(isNew(url, listener)) {
+            contentNetwork.getMovieInfo(getListener(url, listener));
+        }
     }
 
     //////////////////////////////////////////////////////////////////
@@ -134,7 +138,7 @@ public class RestApi {
 
     /** url map içinde kayıtlı ise kayıtlı olan response objesini listener'a gönder */
     private boolean isNew(String url, ResponseListener listener) {
-
+        Log.i("!!!", "request");
         if(MODE == 3 && map.containsKey(url)) {
             Object data = map.get(url);
             listener.onResponse(data);
@@ -162,3 +166,5 @@ public class RestApi {
         }
     }
 }
+
+
