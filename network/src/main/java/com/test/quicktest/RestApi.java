@@ -117,7 +117,7 @@ public class RestApi {
     /** Verilen key ve listener ile tüm request'lerde kullanılabilen generic bir NetworkListener oluşturur.*/
     NetworkListener getListener(final String url, final ResponseListener listener) {
 
-        return  new NetworkListener() {
+        return new NetworkListener() {
             @Override
             public void onResponse(Object data) {
                 if(data != null) {
@@ -128,6 +128,7 @@ public class RestApi {
 
             @Override
             public void onError() {
+                Log.i("!!!", "onError: ");
                 if(MODE == 2) {
                     Object data = map.get(url);
                     listener.onResponse(data);

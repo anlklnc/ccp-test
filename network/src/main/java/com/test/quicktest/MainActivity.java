@@ -16,6 +16,7 @@ import com.havelsan.kife.ccp.dto.ProcessInfoDto;
 import com.havelsan.kife.ccp.dto.ServiceInfoDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void contentTest() {
-        ContentApi.getInstance().getMovieInfo(new ResponseListener() {
+        RestApi.getInstance().getMovieInfo(new ResponseListener() {
             @Override
             public void onResponse(Object o) {
-                Log.i("!!!", "onResponse: ");
+                ArrayList<Movie> list = (ArrayList<Movie>)o;
+                for(Movie m:list) {
+                    Log.i("!!!", "movie: "+m.getId()+" - "+m.getName()+" - "+m.getArtist());
+                }
             }
         });
     }
