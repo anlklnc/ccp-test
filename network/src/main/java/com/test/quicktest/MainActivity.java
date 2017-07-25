@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.havelsan.kife.ccp.dto.ServiceInfoDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
 import com.havelsan.kife.ccp.dto.UserDto;
 import com.test.quicktest.MediaPlayer.PlayerActivity;
+import com.test.quicktest.MediaPlayer.PlayerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,37 +50,58 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                //todo
-                boolean preferExtensionDecoders = false;
-                String uri = "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3";
-//                String uri = "https://planet.thy.com/mediacontent/video/tkhv1704M00375w.mpd";
-                String drmLicenseUrl = null;
-//                String drmLicenseUrl = "https://planet.thy.com:9999/proxy?assetid=tkhv1704M00375w";
-                String[] drmKeyRequestProperties = null;
-                UUID drmSchemeUuid = C.WIDEVINE_UUID;
-                String extension = null;
-
-                Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
-                intent.putExtra(PlayerActivity.PREFER_EXTENSION_DECODERS, preferExtensionDecoders);
-                if (drmSchemeUuid != null) {
-                    intent.putExtra(PlayerActivity.DRM_SCHEME_UUID_EXTRA, drmSchemeUuid.toString())
-                    .putExtra(PlayerActivity.DRM_LICENSE_URL, drmLicenseUrl)
-                    .putExtra(PlayerActivity.DRM_KEY_REQUEST_PROPERTIES, drmKeyRequestProperties);
-                }
-
-                intent.setData(Uri.parse(uri))
-                        .putExtra(PlayerActivity.EXTENSION_EXTRA, extension)
-                        .setAction(PlayerActivity.ACTION_VIEW);
-
-                startActivity(intent);
-                //todo
+                test();
             }
         });
 
-        postTest();
+        //
+
     }
 
-    void postTest(){
+    void test() {
+        fragmentDialogTest();
+    }
+
+
+
+
+
+
+    void fragmentDialogTest() {
+        FragmentManager fm = getSupportFragmentManager();
+        PlayerFragment fragment = new PlayerFragment();
+        fragment.show(fm, "fragment_edit_name");
+
+    }
+
+    void mediaTest() {
+        //todo
+        boolean preferExtensionDecoders = false;
+        String uri = "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3";
+//                String uri = "https://planet.thy.com/mediacontent/video/tkhv1704M00375w.mpd";
+        String drmLicenseUrl = null;
+//                String drmLicenseUrl = "https://planet.thy.com:9999/proxy?assetid=tkhv1704M00375w";
+        String[] drmKeyRequestProperties = null;
+        UUID drmSchemeUuid = C.WIDEVINE_UUID;
+        String extension = null;
+
+        Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
+        intent.putExtra(PlayerActivity.PREFER_EXTENSION_DECODERS, preferExtensionDecoders);
+        if (drmSchemeUuid != null) {
+            intent.putExtra(PlayerActivity.DRM_SCHEME_UUID_EXTRA, drmSchemeUuid.toString())
+                    .putExtra(PlayerActivity.DRM_LICENSE_URL, drmLicenseUrl)
+                    .putExtra(PlayerActivity.DRM_KEY_REQUEST_PROPERTIES, drmKeyRequestProperties);
+        }
+
+        intent.setData(Uri.parse(uri))
+                .putExtra(PlayerActivity.EXTENSION_EXTRA, extension)
+                .setAction(PlayerActivity.ACTION_VIEW);
+
+        startActivity(intent);
+        //todo
+    }
+
+    void httpPostTest(){
         UserDto dto = new UserDto();
         dto.setUsername("foo");
         dto.setPassword("bar");
