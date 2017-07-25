@@ -2,19 +2,14 @@ package com.test.quicktest.MediaPlayer;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -119,21 +114,24 @@ public class PlayerFragment extends DialogFragment implements View.OnClickListen
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Atos?")
-                .setPositiveButton("Portos!", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                })
-                .setNegativeButton("Paramis!", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
-                    }
-                });
-        // Create the AlertDialog object and return it
-        return builder.create();
+
+
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_player);
+        dialog.show();
+
+        View rootView = dialog.findViewById(R.id.root);
+        rootView.setOnClickListener(this);
+        debugRootView = (LinearLayout) dialog.findViewById(R.id.controls_root);
+        debugTextView = (TextView) dialog.findViewById(R.id.debug_text_view);
+        retryButton = (Button) dialog.findViewById(R.id.retry_button);
+        retryButton.setOnClickListener(this);
+
+        simpleExoPlayerView = (SimpleExoPlayerView) dialog.findViewById(R.id.player_view);
+        simpleExoPlayerView.setControllerVisibilityListener(this);
+        simpleExoPlayerView.requestFocus();
+
+        return dialog;
     }
 
     @Override
@@ -150,26 +148,26 @@ public class PlayerFragment extends DialogFragment implements View.OnClickListen
         context = getContext();
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-
-        View view = inflater.inflate(R.layout.exo_player_activity, null);
-
-        View rootView = view.findViewById(R.id.root);
-        rootView.setOnClickListener(this);
-        debugRootView = (LinearLayout) view.findViewById(R.id.controls_root);
-        debugTextView = (TextView) view.findViewById(R.id.debug_text_view);
-        retryButton = (Button) view.findViewById(R.id.retry_button);
-        retryButton.setOnClickListener(this);
-
-        simpleExoPlayerView = (SimpleExoPlayerView) view.findViewById(R.id.player_view);
-        simpleExoPlayerView.setControllerVisibilityListener(this);
-        simpleExoPlayerView.requestFocus();
-
-        return view;
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        super.onCreateView(inflater, container, savedInstanceState);
+//
+//        View view = inflater.inflate(R.layout.exo_player_activity, null);
+//
+//        View rootView = view.findViewById(R.id.root);
+//        rootView.setOnClickListener(this);
+//        debugRootView = (LinearLayout) view.findViewById(R.id.controls_root);
+//        debugTextView = (TextView) view.findViewById(R.id.debug_text_view);
+//        retryButton = (Button) view.findViewById(R.id.retry_button);
+//        retryButton.setOnClickListener(this);
+//
+//        simpleExoPlayerView = (SimpleExoPlayerView) view.findViewById(R.id.player_view);
+//        simpleExoPlayerView.setControllerVisibilityListener(this);
+//        simpleExoPlayerView.requestFocus();
+//
+//        return view;
+//    }
 
 //    @Override
 //    public void onNewIntent(Intent intent) {
@@ -540,6 +538,7 @@ public class PlayerFragment extends DialogFragment implements View.OnClickListen
     // User controls
 
     private void updateButtonVisibilities() {
+//        debugRootView.setVisibility(View.GONE);
         debugRootView.removeAllViews();
 
         retryButton.setVisibility(needRetrySource ? View.VISIBLE : View.GONE);
@@ -575,7 +574,7 @@ public class PlayerFragment extends DialogFragment implements View.OnClickListen
                 button.setText(label);
                 button.setTag(i);
                 button.setOnClickListener(this);
-                debugRootView.addView(button, debugRootView.getChildCount() - 1);
+//                debugRootView.addView(button, debugRootView.getChildCount() - 1);
             }
         }
     }

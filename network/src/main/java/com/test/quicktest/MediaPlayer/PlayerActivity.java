@@ -236,7 +236,17 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
     // Internal methods
 
     private void initializePlayer() {
-        Intent intent = getIntent();
+
+        String uri = "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3";
+        String drmLicenseUrl = null;
+
+        boolean preferExtensionDecoders = false;
+        UUID drmSchemeUuid = C.WIDEVINE_UUID;
+        String[] keyRequestPropertiesArray = null;
+        String action = ACTION_VIEW;
+        Uri[] uris = new Uri[]{Uri.parse(uri)};
+        String extension = null;
+
         boolean needNewPlayer = player == null;
         if (needNewPlayer) {
             TrackSelection.Factory adaptiveTrackSelectionFactory =
@@ -246,12 +256,9 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
             lastSeenTrackGroupArray = null;
             eventLogger = new EventLogger(trackSelector);
 
-            UUID drmSchemeUuid = intent.hasExtra(DRM_SCHEME_UUID_EXTRA)
-                    ? UUID.fromString(intent.getStringExtra(DRM_SCHEME_UUID_EXTRA)) : null;
+
             DrmSessionManager<FrameworkMediaCrypto> drmSessionManager = null;
             if (drmSchemeUuid != null) {
-                String drmLicenseUrl = intent.getStringExtra(DRM_LICENSE_URL);
-                String[] keyRequestPropertiesArray = intent.getStringArrayExtra(DRM_KEY_REQUEST_PROPERTIES);
                 try {
                     if(drmLicenseUrl != null) {
                         drmSessionManager = buildDrmSessionManager(drmSchemeUuid, drmLicenseUrl,keyRequestPropertiesArray);
@@ -265,9 +272,8 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
                 }
             }
 
-            boolean preferExtensionDecoders = intent.getBooleanExtra(PREFER_EXTENSION_DECODERS, false);
             @DefaultRenderersFactory.ExtensionRendererMode int extensionRendererMode =
-                    ((QuickTest) getApplication()).useExtensionRenderers()
+                    QuickTest.getInstance().useExtensionRenderers()
                             ? (preferExtensionDecoders ? DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER
                             : DefaultRenderersFactory.EXTENSION_RENDERER_MODE_ON)
                             : DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF;
@@ -287,22 +293,12 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
             debugViewHelper.start();
         }
         if (needNewPlayer || needRetrySource) {
-            String action = intent.getAction();
-            Uri[] uris;
-            String[] extensions;
+
+            String[] extensions = new String[]{extension};
             if (ACTION_VIEW.equals(action)) {
-                uris = new Uri[]{intent.getData()};
-                extensions = new String[]{intent.getStringExtra(EXTENSION_EXTRA)};
+
             } else if (ACTION_VIEW_LIST.equals(action)) {
-                String[] uriStrings = intent.getStringArrayExtra(URI_LIST_EXTRA);
-                uris = new Uri[uriStrings.length];
-                for (int i = 0; i < uriStrings.length; i++) {
-                    uris[i] = Uri.parse(uriStrings[i]);
-                }
-                extensions = intent.getStringArrayExtra(EXTENSION_LIST_EXTRA);
-                if (extensions == null) {
-                    extensions = new String[uriStrings.length];
-                }
+
             } else {
                 showToast(getString(R.string.unexpected_intent_action, action));
                 return;

@@ -55,13 +55,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void test() {
-        mediaTest();
+        fragmentDialogTest();
     }
-
-
-
-
-
 
     void fragmentDialogTest() {
         FragmentManager fm = getSupportFragmentManager();
