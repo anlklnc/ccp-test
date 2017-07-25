@@ -14,8 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.havelsan.kife.ccp.dto.CCPResponse;
 import com.havelsan.kife.ccp.dto.ProcessInfoDto;
 import com.havelsan.kife.ccp.dto.ServiceInfoDto;
@@ -31,8 +29,6 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     RestApi restApi;
-    SimpleExoPlayer player;
-    SimpleExoPlayerView simpleExoPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void test() {
-        fragmentDialogTest();
+        mediaTest();
     }
 
 
@@ -69,9 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
     void fragmentDialogTest() {
         FragmentManager fm = getSupportFragmentManager();
-        PlayerFragment fragment = new PlayerFragment();
+        PlayerFragment fragment = PlayerFragment.newInstance();
         fragment.show(fm, "fragment_edit_name");
-
     }
 
     void mediaTest() {
