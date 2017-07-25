@@ -1,5 +1,6 @@
 package com.test.ui.fragments;
 
+
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -19,18 +20,19 @@ import com.test.ui.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by asd on 13.7.2017.
- */
 
-public class VideoFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class AudioFragment extends Fragment {
+
     private static final int LAYOUT = R.layout.fragment_audio;
 
     RecyclerView recyclerView;
     private List<Album> albumList;
     private AlbumsAdapter adapter;
 
-    public VideoFragment() {
+    public AudioFragment() {
         // Required empty public constructor
     }
 
@@ -47,7 +49,7 @@ public class VideoFragment extends Fragment {
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 5);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new VideoFragment.GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
@@ -85,20 +87,20 @@ public class VideoFragment extends Fragment {
         a = new Album("Honeymoon", 14, covers[4]);
         albumList.add(a);
 
-//        a = new Album("I Need a Doctor", 1, covers[5]);
-//        albumList.add(a);
-//
-//        a = new Album("Loud", 11, covers[6]);
-//        albumList.add(a);
-//
-//        a = new Album("Legend", 14, covers[7]);
-//        albumList.add(a);
-//
-//        a = new Album("Hello", 11, covers[8]);
-//        albumList.add(a);
-//
-//        a = new Album("Greatest Hits", 17, covers[9]);
-//        albumList.add(a);
+        a = new Album("I Need a Doctor", 1, covers[5]);
+        albumList.add(a);
+
+        a = new Album("Loud", 11, covers[6]);
+        albumList.add(a);
+
+        a = new Album("Legend", 14, covers[7]);
+        albumList.add(a);
+
+        a = new Album("Hello", 11, covers[8]);
+        albumList.add(a);
+
+        a = new Album("Greatest Hits", 17, covers[9]);
+        albumList.add(a);
 
         adapter.notifyDataSetChanged();
     }

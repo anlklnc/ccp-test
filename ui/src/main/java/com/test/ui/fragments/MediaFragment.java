@@ -32,15 +32,17 @@ public class MediaFragment extends Fragment {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_audio:
                     Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT);
                     switchFragment(1);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_video:
                     Toast.makeText(getContext(), "2", Toast.LENGTH_SHORT);
+                    switchFragment(2);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_books:
                     Toast.makeText(getContext(), "3", Toast.LENGTH_SHORT);
+                    switchFragment(3);
                     return true;
             }
             return false;
@@ -53,7 +55,14 @@ public class MediaFragment extends Fragment {
         switch (index) {
             case 1:
                 targetFragment = new VideoFragment();
+                tag = "audio";
+                break;
+            case 2:
+                targetFragment = new AudioFragment();
                 tag = "video";
+                break;
+            case 3:
+                tag = "books";
                 break;
         }
 

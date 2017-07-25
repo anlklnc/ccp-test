@@ -16,6 +16,7 @@ import com.havelsan.kife.ccp.dto.DiscreteDto;
 import com.havelsan.kife.ccp.dto.FlightInfoDto;
 import com.havelsan.kife.ccp.dto.PartNumberDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
+import com.havelsan.kife.ccp.dto.UserDto;
 
 import java.lang.reflect.Type;
 import java.util.Date;
@@ -26,7 +27,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 /**
  * Created by asd on 13.6.2017.
  */
@@ -34,8 +38,10 @@ import retrofit2.http.GET;
 public class Network {
 
     final String BASE_URL = "http://192.168.43.206:8080/";    //localhost-ifetest
-//    final String BASE_URL = "http://192.168.42.30:8080/";    //localhost-huawei
 //    final String BASE_URL = "http://10.150.25.47:8080/";    //localhost-hwadmin
+
+//    final String BASE_URL = "http://192.168.42.30:8080/";    //localhost-huawei
+//    final String BASE_URL = "http://192.168.100.74:8080/";  //localhost-passenger
 //    final String BASE_URL = "http://192.168.43.237:8080/";    //onurun makine-ifetest
 //    final String BASE_URL = "http://10.150.25.59:8080/";  //onurun makine-hwadmin
 
@@ -65,7 +71,27 @@ public class Network {
 
         @GET("/api/flightinfo/current")
         Call<FlightInfoDto>flightInfo();
+
+        @POST("/api/user/authenticate")
+        Call<LoginResponse> signin(@Body UserDto user);
+
+//        @FormUrlEncoded
+//        @POST("/api/user/authenticate")
+//        Call<LoginResponse> signin(
+//                @Field("username") String username,
+//                @Field("password") String password);
+
+
+//        @FormUrlEncoded
+//        @POST("user/edit")
+//        Call<User> updateUser(@Field("first_name") String first, @Field("last_name") String last);
     }
+
+//    void authenticate(final NetworkListener listener, UserDto user) { setRequest(client.signin(user.getUsername(), user.getPassword()), listener);}
+//    public String authenticate(UserDto user){return getUrl(client.signin(user.getUsername(), user.getPassword()));}
+
+    void authenticate(final NetworkListener listener, UserDto user) { setRequest(client.signin(user), listener);}
+    public String authenticate(UserDto user){return getUrl(client.signin(user));}
 
     /** aircraft info */
     void getAircraftInfo(final NetworkListener listener) { setRequest(client.aircraftInfo(), listener); }
@@ -130,14 +156,18 @@ public class Network {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 Object data = response.body();
-                Log.i("!!!", "restApi.onResponse");
-                listener.onResponse(data);
+                if(data == null) {
+                    int errorCode = response.raw().code();
+                    listener.onError(errorCode);
+                } else {
+                    listener.onResponse(data);
+                }
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
                 Log.e("!!!", "Connection failed: " + t.getCause());
-                listener.onError();
+                listener.onError(-1);
             }
         };
 

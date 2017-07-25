@@ -6,5 +6,5 @@ package com.test.quicktest;
 
 public interface NetworkListener {
     void onResponse(Object o);
-    void onError();
+    void onError(int errorCode);
 }

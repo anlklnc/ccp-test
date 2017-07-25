@@ -46,7 +46,7 @@ public class ContentNetwork {
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
                 Log.e("!!!", "Connection failed: " + t.getCause());
-                listener.onError();
+                listener.onError(-1);
             }
         };
 

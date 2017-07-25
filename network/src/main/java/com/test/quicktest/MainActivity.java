@@ -1,5 +1,7 @@
 package com.test.quicktest;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,20 +11,26 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
+import com.google.android.exoplayer2.C;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.havelsan.kife.ccp.dto.CCPResponse;
 import com.havelsan.kife.ccp.dto.ProcessInfoDto;
 import com.havelsan.kife.ccp.dto.ServiceInfoDto;
 import com.havelsan.kife.ccp.dto.SystemEquipment;
+import com.havelsan.kife.ccp.dto.UserDto;
+import com.test.quicktest.MediaPlayer.PlayerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
     RestApi restApi;
-    TextView tw;
+    SimpleExoPlayer player;
+    SimpleExoPlayerView simpleExoPlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,27 +41,57 @@ public class MainActivity extends AppCompatActivity {
 
         restApi = RestApi.getInstance();
 
-        tw = (TextView)findViewById(R.id.tw_hello);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                //networkTest();
-                contentTest();
+
+                //todo
+                boolean preferExtensionDecoders = false;
+                String uri = "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3";
+//                String uri = "https://planet.thy.com/mediacontent/video/tkhv1704M00375w.mpd";
+                String drmLicenseUrl = null;
+//                String drmLicenseUrl = "https://planet.thy.com:9999/proxy?assetid=tkhv1704M00375w";
+                String[] drmKeyRequestProperties = null;
+                UUID drmSchemeUuid = C.WIDEVINE_UUID;
+                String extension = null;
+
+                Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
+                intent.putExtra(PlayerActivity.PREFER_EXTENSION_DECODERS, preferExtensionDecoders);
+                if (drmSchemeUuid != null) {
+                    intent.putExtra(PlayerActivity.DRM_SCHEME_UUID_EXTRA, drmSchemeUuid.toString())
+                    .putExtra(PlayerActivity.DRM_LICENSE_URL, drmLicenseUrl)
+                    .putExtra(PlayerActivity.DRM_KEY_REQUEST_PROPERTIES, drmKeyRequestProperties);
+                }
+
+                intent.setData(Uri.parse(uri))
+                        .putExtra(PlayerActivity.EXTENSION_EXTRA, extension)
+                        .setAction(PlayerActivity.ACTION_VIEW);
+
+                startActivity(intent);
+                //todo
             }
         });
 
-        //networkTest();
-        contentTest();
+        postTest();
     }
 
-    @Override
-    protected void onStop() {
-        Log.i("!!!", "onStop: ");
-        super.onStop();
+    void postTest(){
+        UserDto dto = new UserDto();
+        dto.setUsername("foo");
+        dto.setPassword("bar");
+        RestApi.getInstance().authenticate(dto, new ResponseListener() {
+            @Override
+            public void onResponse(Object o) {
+                if(o != null) {
+                    Log.i("!!!", "onResponse: ");
+                }
+            }
+        });
     }
+
 
     void contentTest() {
         RestApi.getInstance().getMovieInfo(new ResponseListener() {
@@ -71,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
 //        tw.setText("test");
 //        restApi.subscribe(tw);
-
         restApi.getAircraftInfo(new ResponseListener() {
             @Override
             public void onResponse(Object o) {

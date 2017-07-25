@@ -4,6 +4,8 @@ package com.test.quicktest;
 import android.os.Handler;
 import android.util.Log;
 
+import com.havelsan.kife.ccp.dto.UserDto;
+
 import java.util.HashMap;
 
 /**
@@ -99,16 +101,20 @@ public class RestApi {
         }
     }
 
-    public void subscribeSomething() {
-
-    }
-
     //CONTENT
     public void getMovieInfo(final ResponseListener listener) {
 
         final String url = contentNetwork.getMovieInfo();
         if(isNew(url, listener)) {
             contentNetwork.getMovieInfo(getListener(url, listener));
+        }
+    }
+
+    public void authenticate(UserDto user, final ResponseListener listener) {
+
+        final String url = network.authenticate(user);
+        if(isNew(url, listener)) {
+            network.authenticate(getListener(url, listener), user);
         }
     }
 
@@ -127,11 +133,17 @@ public class RestApi {
             }
 
             @Override
-            public void onError() {
+            public void onError(int errorCode) {
                 Log.i("!!!", "onError: ");
-                if(MODE == 2) {
-                    Object data = map.get(url);
-                    listener.onResponse(data);
+                switch (errorCode) {
+                    case 401:
+
+                        break;
+                    default:
+                        if(MODE == 2) {
+                            Object data = map.get(url);
+                            listener.onResponse(data);
+                        }
                 }
             }
         };
