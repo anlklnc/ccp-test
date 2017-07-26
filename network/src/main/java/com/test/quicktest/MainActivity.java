@@ -1,7 +1,5 @@
 package com.test.quicktest;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.exoplayer2.C;
 import com.havelsan.kife.ccp.dto.CCPResponse;
 import com.havelsan.kife.ccp.dto.ProcessInfoDto;
 import com.havelsan.kife.ccp.dto.ServiceInfoDto;
@@ -24,7 +21,6 @@ import com.test.quicktest.MediaPlayer.PlayerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,46 +45,24 @@ public class MainActivity extends AppCompatActivity {
                 test();
             }
         });
-
-        //
-
     }
 
     void test() {
         fragmentDialogTest();
+//        mediaTest();
     }
 
     void fragmentDialogTest() {
+        String uri = "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3";
         FragmentManager fm = getSupportFragmentManager();
-        PlayerFragment fragment = PlayerFragment.newInstance();
+        PlayerFragment fragment = PlayerFragment.newInstance(uri);
         fragment.show(fm, "fragment_edit_name");
     }
 
     void mediaTest() {
-        //todo
-        boolean preferExtensionDecoders = false;
-        String uri = "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3";
-//                String uri = "https://planet.thy.com/mediacontent/video/tkhv1704M00375w.mpd";
-        String drmLicenseUrl = null;
-//                String drmLicenseUrl = "https://planet.thy.com:9999/proxy?assetid=tkhv1704M00375w";
-        String[] drmKeyRequestProperties = null;
-        UUID drmSchemeUuid = C.WIDEVINE_UUID;
-        String extension = null;
-
-        Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
-        intent.putExtra(PlayerActivity.PREFER_EXTENSION_DECODERS, preferExtensionDecoders);
-        if (drmSchemeUuid != null) {
-            intent.putExtra(PlayerActivity.DRM_SCHEME_UUID_EXTRA, drmSchemeUuid.toString())
-                    .putExtra(PlayerActivity.DRM_LICENSE_URL, drmLicenseUrl)
-                    .putExtra(PlayerActivity.DRM_KEY_REQUEST_PROPERTIES, drmKeyRequestProperties);
-        }
-
-        intent.setData(Uri.parse(uri))
-                .putExtra(PlayerActivity.EXTENSION_EXTRA, extension)
-                .setAction(PlayerActivity.ACTION_VIEW);
-
-        startActivity(intent);
-        //todo
+        String uri = "https://planet.thy.com/mediacontent/video/tkhv1704M00375w.mpd";
+        String drmLicenseUrl = "https://planet.thy.com:9999/proxy?assetid=tkhv1704M00375w";
+        PlayerActivity.startActivity(this, uri ,drmLicenseUrl);
     }
 
     void httpPostTest(){

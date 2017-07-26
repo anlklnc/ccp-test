@@ -66,6 +66,10 @@ import java.util.UUID;
 public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventListener,
         PlaybackControlView.VisibilityListener{
 
+    public static final int TYPE_FRAGMENT = 0;  //used in a dialog fragment, windowed
+    public static final int TYPE_ACTIVITY = 1;  //used in an activity, fullscreen
+    int type;
+
     private DataSource.Factory mediaDataSourceFactory;
     private SimpleExoPlayer player;
     private DefaultTrackSelector trackSelector;
@@ -93,15 +97,23 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
     private TextView debugTextView;
     private Button retryButton;
 
-    private Context context;
     private Activity activity;
-    Bundle args;
+    private Context context;
 
-    public PlayerPresenter(Context context, Activity activity, View rootView, Bundle args) {
+    String uri, drmLicenseUrl;
 
-        this.context = context;
+    public PlayerPresenter(Activity activity, View rootView, Bundle args) {
+
         this.activity = activity;
-        this.args = args;
+        context = activity;
+
+        uri = args.getString("URI");
+        drmLicenseUrl = args.getString("DRM");
+        if(drmLicenseUrl == null) {
+            type = TYPE_FRAGMENT;
+        } else {
+            type = TYPE_ACTIVITY;
+        }
 
         shouldAutoPlay = true;
         clearResumePosition();
@@ -121,16 +133,41 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
         simpleExoPlayerView = (SimpleExoPlayerView) rootView.findViewById(R.id.player_view);
         simpleExoPlayerView.setControllerVisibilityListener(this);
         simpleExoPlayerView.requestFocus();
+
+        if(type == TYPE_FRAGMENT) {
+            debugTextView.setVisibility(View.GONE);
+        }
     }
 
     public boolean isPlayerNull() {
         return player == null;
     }
 
-    public void initializePlayer() {
+    // OnClickListener methods
 
-        String uri = args.getString("URI");
-        String drmLicenseUrl = args.getString("DRM");
+    @Override
+    public void onClick(View view) {
+        if (view == retryButton) {
+            initializePlayer();
+        } else if (view.getParent() == debugRootView) {
+            MappingTrackSelector.MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
+            if (mappedTrackInfo != null) {
+                trackSelectionHelper.showSelectionDialog(activity, ((Button) view).getText(),
+                        trackSelector.getCurrentMappedTrackInfo(), (int) view.getTag());
+            }
+        }
+    }
+
+    // PlaybackControlView.VisibilityListener implementation
+
+    @Override
+    public void onVisibilityChange(int visibility) {
+        debugRootView.setVisibility(visibility);
+    }
+
+    // Internal methods
+
+    public void initializePlayer() {
 
         boolean preferExtensionDecoders = false;
         UUID drmSchemeUuid = C.WIDEVINE_UUID;
@@ -206,20 +243,6 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
         }
     }
 
-    public void releasePlayer() {
-        if (player != null) {
-            debugViewHelper.stop();
-            debugViewHelper = null;
-            shouldAutoPlay = player.getPlayWhenReady();
-            updateResumePosition();
-            player.release();
-            player = null;
-            trackSelector = null;
-            trackSelectionHelper = null;
-            eventLogger = null;
-        }
-    }
-
     private MediaSource buildMediaSource(Uri uri, String overrideExtension) {
 
         int type = TextUtils.isEmpty(overrideExtension) ? Util.inferContentType(uri)
@@ -259,6 +282,20 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
                 FrameworkMediaDrm.newInstance(uuid), drmCallback, null, mainHandler, eventLogger);
     }
 
+    public void releasePlayer() {
+        if (player != null) {
+            debugViewHelper.stop();
+            debugViewHelper = null;
+            shouldAutoPlay = player.getPlayWhenReady();
+            updateResumePosition();
+            player.release();
+            player = null;
+            trackSelector = null;
+            trackSelectionHelper = null;
+            eventLogger = null;
+        }
+    }
+
     private void updateResumePosition() {
         resumeWindow = player.getCurrentWindowIndex();
         resumePosition = player.isCurrentWindowSeekable() ? Math.max(0, player.getCurrentPosition())
@@ -268,26 +305,6 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
     private void clearResumePosition() {
         resumeWindow = C.INDEX_UNSET;
         resumePosition = C.TIME_UNSET;
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view == retryButton) {
-            initializePlayer();
-        } else if (view.getParent() == debugRootView) {
-            MappingTrackSelector.MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
-            if (mappedTrackInfo != null) {
-                trackSelectionHelper.showSelectionDialog(activity, ((Button) view).getText(),
-                        trackSelector.getCurrentMappedTrackInfo(), (int) view.getTag());
-            }
-        }
-    }
-
-    // PlaybackControlView.VisibilityListener implementation
-
-    @Override
-    public void onVisibilityChange(int visibility) {
-        debugRootView.setVisibility(visibility);
     }
 
     /**
@@ -411,7 +428,11 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
     // User controls
 
     private void updateButtonVisibilities() {
-//        debugRootView.setVisibility(View.GONE);
+        if(type == TYPE_FRAGMENT) {
+            debugRootView.setVisibility(View.GONE);
+            return;
+        }
+
         debugRootView.removeAllViews();
 
         retryButton.setVisibility(needRetrySource ? View.VISIBLE : View.GONE);
@@ -447,7 +468,7 @@ public class PlayerPresenter implements View.OnClickListener, ExoPlayer.EventLis
                 button.setText(label);
                 button.setTag(i);
                 button.setOnClickListener(this);
-//                debugRootView.addView(button, debugRootView.getChildCount() - 1);
+                debugRootView.addView(button, debugRootView.getChildCount() - 1);
             }
         }
     }

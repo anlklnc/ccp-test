@@ -22,11 +22,9 @@ public class PlayerFragment extends DialogFragment{
     Dialog dialog;
     PlayerPresenter presenter;
 
-    public static PlayerFragment newInstance() {
+    public static PlayerFragment newInstance(String uri) {
         Bundle args = new Bundle();
-        args.putString("URI", "https://planet.thy.com/mediacontent/audio/Pentagram_Akustik/Pentagram_Akustik-006.mp3");
-        //                String uri = "https://planet.thy.com/mediacontent/video/tkhv1704M00375w.mpd";
-        //args.putString("DRM", "https://planet.thy.com:9999/proxy?assetid=tkhv1704M00375w");
+        args.putString("URI", uri);
 
         PlayerFragment fragment = new PlayerFragment();
         fragment.setArguments(args);
@@ -49,7 +47,7 @@ public class PlayerFragment extends DialogFragment{
 
         View rootView = dialog.findViewById(R.id.root);
 
-        presenter = new PlayerPresenter(context, getActivity(), rootView, getArguments());
+        presenter = new PlayerPresenter(getActivity(), rootView, getArguments());
 
         return dialog;
     }
