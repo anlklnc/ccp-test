@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray3">
+
+    <RelativeLayout
+        android:id="@+id/rel_group1"
+        android:layout_width="200dp" android:layout_height="wrap_content"
+        android:layout_marginTop="120dp" android:layout_marginStart="50dp" android:paddingBottom="20dp" android:paddingTop="20dp"
+        android:background="@color/gray2"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            style="@style/ww" android:orientation="vertical" android:id="@+id/lin_title"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                style="@style/ww"
+                android:text="Aircraft Power" android:textColor="@color/white" android:textSize="22sp"
+            />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                style="@style/ww"
+                >
+                <TextView
+                    style="@style/ww"
+                    android:text="Status: " android:textColor="@color/white" android:textSize="15sp"
+                    />
+
+                <TextView
+                    style="@style/ww"
+                    android:layout_marginLeft="10dp"
+                    android:text="OK" android:textColor="@color/white" android:textSize="15sp"
+                />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ww" android:layout_marginLeft="20dp"
+            android:orientation="vertical" android:layout_below="@id/lin_title"
+            >
+            <LinearLayout
+                android:orientation="vertical" style="@style/ww"
+                android:layout_below="@+id/lin_title" android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="100dp" android:layout_height="44dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        style="@style/ww"
+                        android:text="Phase A" android:textSize="18sp"
+                        />
+                    <TextView
+                        style="@style/ww"
+                        android:text="Over Voltage" android:textSize="13sp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ww"
+                    android:text="Voltage: 115VAC" android:textSize="10sp"
+                    android:layout_marginTop="2dp"
+                    />
+
+                <TextView
+                    style="@style/ww"
+                    android:text="Current: 3 Amp" android:textSize="10sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical" style="@style/ww"
+                android:layout_below="@+id/lin_title" android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="100dp" android:layout_height="44dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        style="@style/ww"
+                        android:text="Phase A" android:textSize="18sp"
+                        />
+                    <TextView
+                        style="@style/ww"
+                        android:text="Over Voltage" android:textSize="13sp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ww"
+                    android:text="Voltage: 115VAC" android:textSize="10sp"
+                    android:layout_marginTop="2dp"
+                    />
+
+                <TextView
+                    style="@style/ww"
+                    android:text="Current: 3 Amp" android:textSize="10sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical" style="@style/ww"
+                android:layout_below="@+id/lin_title" android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="100dp" android:layout_height="44dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        style="@style/ww"
+                        android:text="Phase A" android:textSize="18sp"
+                        />
+                    <TextView
+                        style="@style/ww"
+                        android:text="Over Voltage" android:textSize="13sp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ww"
+                    android:text="Voltage: 115VAC" android:textSize="10sp"
+                    android:layout_marginTop="2dp"
+                    />
+
+                <TextView
+                    style="@style/ww"
+                    android:text="Current: 3 Amp" android:textSize="10sp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_group2"
+        android:layout_width="200dp" android:layout_height="520dp"
+        android:layout_marginTop="70dp" android:layout_marginLeft="200dp"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/line_pa_m12"
+            android:tint="@color/red2"
+            android:scaleType="fitXY"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/line_pb_m12"
+            android:tint="@color/green"
+            android:scaleType="fitXY"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/line_pc_m12"
+            android:tint="@color/green"
+            android:scaleType="fitXY"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="400dp" android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@id/rel_group2"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:background="@color/gray1">
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="30dp"
+                android:background="@color/blue" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:background="@color/gray2">
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="30dp"
+                android:background="@color/blue" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

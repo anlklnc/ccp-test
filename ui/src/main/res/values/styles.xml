@@ -23,14 +23,17 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="wm">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
     <style name="mw">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="mm">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -70,6 +73,7 @@
         <item name="android:tint">@color/left_menu_icon_tint</item>
 
     </style>
+
     <style name="left_menu_tw">
         <item name="android:id">@id/tw_left_menu_item</item>
         <item name="android:layout_width">0dp</item>
@@ -80,6 +84,7 @@
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/left_menu_tw_tint</item>
     </style>
+
     <style name="tw_flight_info">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -201,4 +206,13 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray3</item>
     </style>
+
+
+
+
+    <!--MCU-->
+    <style name="tw_phase" parent="ww">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>
