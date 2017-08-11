@@ -174,7 +174,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="400dp" android:layout_height="match_parent"
+        android:layout_width="600dp" android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/rel_group2">
 
@@ -276,10 +276,18 @@
             <ListView
                 android:id="@+id/list_zone"
                 style="@style/mw"
-                android:layout_marginBottom="10dp" android:layout_marginLeft="70dp"
+                android:layout_marginBottom="10dp" android:layout_marginLeft="64dp"
                 android:layout_alignParentBottom="true"
                 tools:layout_height="210dp"
                 tools:listitem="@layout/item_zone"
+                />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="70dp"
+                android:background="@color/green"
+                android:layout_above="@id/list_zone"
+                android:layout_marginLeft="64dp"
                 />
         </RelativeLayout>
     </LinearLayout>

@@ -121,9 +121,19 @@ public class PowerStatusActivity extends AppCompatActivity {
             label.setText("Zone "+(position+1));
             label.setTypeface(tf);
 
+            if(position == 0 || position == 1) {
+                View v = view.findViewById(R.id.v_pipe_3);
+                v.setBackgroundResource(R.color.red2);
+            }
+
             if(position == 3) {
                 ImageView iw = (ImageView)view.findViewById(R.id.iw_state);
                 iw.setImageResource(R.drawable.state_error);
+            }
+
+            if(position == 4) {
+                View v = view.findViewById(R.id.v_pipe_2);
+                v.setVisibility(View.GONE);
             }
             return view;
         }
