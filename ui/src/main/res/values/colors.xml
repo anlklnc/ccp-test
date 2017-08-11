@@ -8,6 +8,7 @@
     <color name="gray2">#6E6E6E</color>
     <color name="gray3">#424242</color>
     <color name="gray4">#2E2E2E</color>
+    <color name="gray_bg">#353639</color>
     <color name="red2">#8A0808</color>
     <color name="blue">#2196F3</color>
     <color name="blue2">#084B8A</color>
@@ -17,6 +18,9 @@
     <color name="orange">#DF7401</color>
 
     <color name="text_color_default">@color/gray2</color>
+    
+    <color name="white_dirty">#FBFBEF</color>
+    <color name="white_2">#E5e5e5</color>
 
     <color name="transparent">@android:color/transparent</color>
     <color name="left_menu_tint">@color/gray2</color>
