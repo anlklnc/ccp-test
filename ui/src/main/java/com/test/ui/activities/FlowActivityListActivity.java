@@ -21,11 +21,11 @@ import com.test.ui.fragments.FlowActivityDetailFragment;
 import java.util.List;
 
 /**
- * An activity representing a list of Items. This activity
+ * An activity representing a listId of Items. This activity
  * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
+ * handsets, the activity presents a listId of items, which when touched,
  * lead to a {@link FlowActivityDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
+ * item details. On tablets, the activity presents the listId of items and
  * item details side-by-side using two vertical panes.
  */
 public class FlowActivityListActivity extends AppCompatActivity {

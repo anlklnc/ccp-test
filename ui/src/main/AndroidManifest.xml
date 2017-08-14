@@ -41,7 +41,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.test.ui.activities.FlowActivityListActivity" />
         </activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity" android:exported="true">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 

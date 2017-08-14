@@ -16,7 +16,7 @@ import com.test.ui.fragments.FlowActivityDetailFragment;
 /**
  * An activity representing a single FlowActivity detail screen. This
  * activity is only used narrow width devices. On tablet-size devices,
- * item details are presented side-by-side with a list of items
+ * item details are presented side-by-side with a listId of items
  * in a {@link FlowActivityListActivity}.
  */
 public class FlowActivityDetailActivity extends AppCompatActivity {

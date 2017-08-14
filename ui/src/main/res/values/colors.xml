@@ -9,10 +9,12 @@
     <color name="gray3">#424242</color>
     <color name="gray4">#2E2E2E</color>
     <color name="gray_bg">#353639</color>
+    <color name="red">#EA2828</color>
     <color name="red2">#8A0808</color>
     <color name="blue">#2196F3</color>
     <color name="blue2">#084B8A</color>
     <color name="green">#5FB404</color>
+    <color name="green2">#7ABF32</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="orange">#DF7401</color>
@@ -32,6 +34,7 @@
     <color name="device_highlighted">@color/green</color>
     <color name="divider1">@color/gray3</color>
     <color name="divider2">@color/gray1</color>
+    <color name="mcu_zone_detail_frame">@color/gray1</color>
 
     <color name="album_title">#4c4c4c</color>
 </resources>

@@ -59,11 +59,9 @@
             >
             <LinearLayout
                 style="@style/phase_container"
+                android:paddingTop="14dp" android:paddingBottom="14dp"
+                android:background="@drawable/round_phase_error"
                 >
-
-                <LinearLayout
-                    style="@style/phase_info_1"
-                    >
                     <TextView
                         style="@style/tw_phase_title"
                         android:text="Phase A"
@@ -73,73 +71,47 @@
                         android:text="Over Voltage"
                         />
 
-                </LinearLayout>
-
-                <TextView
-                    style="@style/tw_phase_detail"
-                    android:text="Voltage: 115VAC"                    />
-
-                <TextView
-                    style="@style/ww"
-                    android:text="Current: 3 Amp" android:textSize="10sp"
-                    />
+                    <TextView
+                        style="@style/tw_phase_detail"
+                        android:text="115V - 3A" />
             </LinearLayout>
 
             <LinearLayout
                 style="@style/phase_container"
+                android:paddingTop="14dp" android:paddingBottom="14dp"
                 >
-
-                <LinearLayout
-                    style="@style/phase_info_1"
-                    >
-                    <TextView
-                        style="@style/tw_phase_title"
-                        android:text="Phase A"
-                        />
-                    <TextView
-                        style="@style/tw_phase_status"
-                        android:text="Over Voltage"
-                        />
-
-                </LinearLayout>
+                <TextView
+                    style="@style/tw_phase_title"
+                    android:text="Phase B"
+                    />
+                <TextView
+                    style="@style/tw_phase_status"
+                    android:text="Status: OK"
+                    />
 
                 <TextView
                     style="@style/tw_phase_detail"
-                    android:text="Voltage: 115VAC" />
-
-                <TextView
-                    style="@style/ww"
-                    android:text="Current: 3 Amp" android:textSize="10sp"
-                    />
+                    android:text="115V - 3A" />
             </LinearLayout>
 
             <LinearLayout
                 style="@style/phase_container"
+                android:paddingTop="14dp" android:paddingBottom="14dp"
                 >
-
-                <LinearLayout
-                    style="@style/phase_info_1"
-                    >
-                    <TextView
-                        style="@style/tw_phase_title" 
-                        android:text="Phase A"
-                        />
-                    <TextView
-                        style="@style/tw_phase_status"
-                        android:text="Over Voltage"
-                        />
-
-                </LinearLayout>
+                <TextView
+                    style="@style/tw_phase_title"
+                    android:text="Phase C"
+                    />
+                <TextView
+                    style="@style/tw_phase_status"
+                    android:text="Status: OK"
+                    />
 
                 <TextView
                     style="@style/tw_phase_detail"
-                    android:text="Voltage: 115VAC" />
-
-                <TextView
-                    style="@style/ww"
-                    android:text="Current: 3 Amp" android:textSize="10sp"
-                    />
+                    android:text="115V - 3A" />
             </LinearLayout>
+
         </LinearLayout>
 
     </RelativeLayout>
@@ -174,16 +146,15 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="600dp" android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/rel_group2">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
             android:layout_marginBottom="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/center_bg">
+            android:background="@drawable/center_bg"
+            >
 
             <TextView
                 android:id="@+id/tw7"
@@ -199,83 +170,57 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/sip_on"
+                android:background="@drawable/sip_busy"
                 />
 
             <ImageView
                 style="@style/mcu_icon_inner"
                 android:layout_alignStart="@id/v_mcu1"
                 android:layout_alignTop="@id/v_mcu1"
+                android:backgroundTint="@color/red"
+                android:tint="@color/white_2"
                 />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="80dp"
-                android:orientation="vertical">
-
+            <RelativeLayout
+                android:layout_width="400dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp" android:layout_marginLeft="240dp"
+                >
                 <Button
-                    android:id="@+id/button"
-                    style="@style/btn_zone"
-                    android:text="Zone 1" />
-
+                    style="@style/btn_mcu_discrete"
+                    android:layout_width="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Details"
+                    />
                 <Button
-                    style="@style/btn_zone"
-                    android:text="Zone 2" />
-
+                    style="@style/btn_mcu_discrete"
+                    android:layout_width="180dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:text="Logs"
+                    />
                 <Button
-                    style="@style/btn_zone"
-                    android:text="Zone 3" />
-
+                    style="@style/btn_mcu_discrete"
+                    android:layout_width="180dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:text="All Zones Off"
+                    />
                 <Button
-                    style="@style/btn_zone"
-                    android:text="Zone4" />
+                    style="@style/btn_mcu_discrete"
+                    android:layout_width="180dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:text="Reset"
+                    />
 
-                <Button
-                    style="@style/btn_zone"
-                    android:text="Zone5" />
-            </LinearLayout>
-        </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/center_bg"
-            >
-
-            <TextView
-                android:id="@+id/tw8" style="@style/mcu_label"
-                android:text="MCU 2"
-                android:layout_alignTop="@+id/v_mcu2"
-                android:layout_alignStart="@+id/v_mcu2"
-                />
-
-            <View
-                android:id="@+id/v_mcu2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/sip_on"
-                />
-
-            <ImageView
-                android:id="@+id/iw_mcu_2"
-                style="@style/mcu_icon_inner"
-                android:layout_alignStart="@id/v_mcu2"
-                android:layout_alignTop="@id/v_mcu2"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="56dp"
-                ></LinearLayout>
+            </RelativeLayout>
 
             <ListView
-                android:id="@+id/list_zone"
-                style="@style/mw"
+                android:id="@+id/list_zone_1"
+                android:layout_width="600dp" android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp" android:layout_marginLeft="64dp"
                 android:layout_alignParentBottom="true"
                 tools:layout_height="210dp"
@@ -286,9 +231,244 @@
                 android:layout_width="4dp"
                 android:layout_height="70dp"
                 android:background="@color/green"
-                android:layout_above="@id/list_zone"
+                android:layout_above="@id/list_zone_1"
                 android:layout_marginLeft="64dp"
                 />
+
+            <ScrollView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp" android:layout_marginTop="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                >
+                <LinearLayout
+                    android:id="@+id/lin_mcu_discrete_1"
+                    style="@style/mm"
+                    android:orientation="vertical"
+                    >
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="GFI"
+                        />
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="Over Load"
+                        />
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="Over Temp"
+                        android:background="@drawable/round4_red" android:textColor="@color/red"
+                        />
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="Input Error"
+                        />
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="Output Error"
+                        />
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="Discrete 1"
+                        />
+                    <Button
+                        style="@style/btn_mcu_discrete_2"
+                        android:text="Discrete 2"
+                        />
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/center_bg">
+
+            <TextView
+                android:id="@+id/tw8"
+                style="@style/mcu_label"
+                android:layout_alignStart="@+id/v_mcu2"
+                android:layout_alignTop="@+id/v_mcu2"
+                android:text="MCU 2" />
+
+            <View
+                android:id="@+id/v_mcu2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/sip_on" />
+
+            <ImageView
+                android:id="@+id/iw_mcu_2"
+                style="@style/mcu_icon_inner"
+                android:layout_alignStart="@id/v_mcu2"
+                android:layout_alignTop="@id/v_mcu2" />
+
+            <LinearLayout
+                android:id="@+id/lin_options"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320dp"
+                android:layout_marginTop="20dp">
+
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp">
+
+                    <ImageView
+                        android:id="@+id/iw_opt_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/btn_mcu_option" />
+
+                    <ImageView
+                        style="@style/mcu_icon_inner"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginTop="19dp"
+                        android:src="@drawable/ic_log_green"
+                        android:paddingBottom="3dp"
+                        />
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="40dp">
+
+                    <ImageView
+                        android:id="@+id/iw_opt_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/btn_mcu_option" />
+
+                    <ImageView
+                        style="@style/mcu_icon_inner"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginTop="19dp"
+                        android:src="@drawable/ic_details_green"
+                        android:paddingBottom="3dp"
+                        />
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="40dp">
+
+                    <ImageView
+                        android:id="@+id/iw_opt_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/btn_mcu_option" />
+
+                    <ImageView
+                        style="@style/mcu_icon_inner"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginTop="19dp"
+                        android:src="@drawable/ic_reset_green"
+                        android:paddingBottom="3dp"
+                        />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lin_options"
+                android:layout_alignStart="@id/lin_options"
+                android:layout_alignEnd="@id/lin_options">
+                <TextView
+                    style="@style/ww"
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:text="Logs" android:textColor="@color/white_2"
+                />
+                <TextView
+                    style="@style/ww"
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Details" android:textColor="@color/white_2"
+                    />
+                <TextView
+                    style="@style/ww"
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:gravity="right"
+                    android:paddingRight="20dp"
+                    android:text="Reset" android:textColor="@color/white_2"
+                    />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/list_zone_2"
+                android:layout_width="600dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="64dp"
+                tools:layout_height="210dp"
+                tools:listitem="@layout/item_zone" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="70dp"
+                android:layout_above="@id/list_zone_2"
+                android:layout_marginLeft="64dp"
+                android:background="@color/green" />
+
+            <ScrollView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:id="@+id/lin_mcu_discrete"
+                    style="@style/mm"
+                    android:orientation="vertical">
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:text="GFI" />
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:text="Over Load" />
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:text="Over Temp" />
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:text="Input Error" />
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:text="Output Error" />
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:background="@drawable/btn_option_red"
+                        android:text="Discrete 1" />
+
+                    <Button
+                        style="@style/btn_mcu_discrete"
+                        android:text="Discrete 2" />
+                </LinearLayout>
+            </ScrollView>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -4,7 +4,6 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:layout_width="400dp"
     tools:background="@color/white_2"
     >
 
@@ -23,7 +22,8 @@
         android:background="@color/green"/>
 
     <LinearLayout
-        style="@style/mw"
+        android:id="@+id/lin_content"
+        style="@style/ww"
         android:orientation="horizontal"
         android:paddingTop="6dp" android:paddingBottom="6dp"
         android:gravity="center"
@@ -50,4 +50,15 @@
             android:layout_marginLeft="20dp"
             />
     </LinearLayout>
+
+    <View
+        android:id="@+id/v_pipe_4"
+        android:layout_width="98dp" android:layout_height="4dp"
+        android:layout_toRightOf="@id/lin_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:background="@color/mcu_zone_detail_frame"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        />
 </RelativeLayout>
